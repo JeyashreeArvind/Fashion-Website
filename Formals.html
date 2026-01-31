@@ -1,0 +1,1051 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fashion Website</title>
+    <link rel="stylesheet" href="Layout10.css">
+     <link href="https://fonts.cdnfonts.com/css/fashion-fetish" rel="stylesheet">
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com">
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+     <style>
+        .container {
+    max-width: 1400px;
+    margin: 0 auto;
+}
+.filters{
+    margin-top: 80px;
+}
+
+.filters span {
+    margin-right: 20px;
+    font-size: 28px;
+    color: black;
+    cursor: pointer;
+}
+
+.filters span:nth-child(5) {
+    color: #FF6F61; /* Color for 'Modern' */
+}
+
+.product-list {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 50px;
+    margin-left: 100px;
+}
+
+
+
+.product-card {
+    height: 400px;
+    width: 270px;
+    /* margin: 0 10px; */
+}
+
+.image-container {
+    position: relative;
+    overflow: hidden;
+    /* Aspect ratio styling might be needed based on images */
+}
+
+.image-container img {
+    width: 270px;
+    height: 340px;
+    display: block;
+}
+
+/* The overlay handles both the heart and the button */
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(222, 203, 203, 0.3); /* Start transparent */
+    opacity: 0;
+    transition: opacity 0.3s ease, background 0.3s ease;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    padding-bottom: 20px;
+}
+
+/* How to make the elements appear on hover */
+.product-card:hover .overlay {
+    opacity: 1;
+    /* Optional: Add a slight background color on hover */
+    /* background: rgba(0, 0, 0, 0.2); */
+}
+
+.heart-icon {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+
+    color: #FF6F61; /* Red circular background */
+    border-radius: 50%;
+    padding: 5px;
+    font-size: 16px;
+    opacity: 0; /* Hidden by default */
+    transition: opacity 0.3s ease;
+}
+
+.product-card:hover .heart-icon {
+    opacity: 1; /* Appear on hover */
+}
+
+.buy-now {
+    background-color: #FF6F61;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    font-size: 16px;
+    border-radius: 5px;
+    opacity: 0; /* Hidden by default */
+    transform: translateY(20px); /* Start slightly below final position */
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.product-card:hover .buy-now {
+    opacity: 1; /* Appear on hover */
+    transform: translateY(0); /* Slide into view */
+}
+
+.product-info {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+}
+
+.name {
+    font-weight: bold;
+    margin: 0;
+}
+
+.price {
+    font-weight: bold;
+    margin: 0;
+}
+
+.wear-type {
+    color: #888;
+    font-size: 0.9em;
+    margin: 5px 0 0;
+}
+  .back-button {
+    /* Color and background */
+    background-color: #FF6F61; /* A coral-like color */
+    color: white;
+    margin-left: 750px;
+    margin-top: 100px;
+    margin-bottom: 100px;
+    
+    /* Shape and size */
+    border: none;
+    border-radius: 8px; /* Rounded corners */
+    padding: 20px 40px;
+    
+    /* Text and layout */
+    font-size: 26px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px; /* Space between arrow and text */
+    
+    /* Optional: Hover effect */
+    transition: background-color 0.3s;
+  }
+
+  .back-button:hover {
+    background-color: #FF6F61; /* Slightly darker on hover */
+  }
+  
+.act{
+    color: #FF6F61;
+}
+.filter-container {
+    width: 300px;
+    height:1650px;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    border: 1px solid black;
+    margin-left: 50px;
+}
+
+.section {
+    padding: 15px;
+    border-bottom: 1px solid #eee;
+    margin-top: 100px;
+}
+
+.section:last-child {
+    border-bottom: none;
+}
+
+h2 {
+    font-size: 16px;
+    font-weight: bold;
+    margin-top: 0;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+}
+
+.category-list, .section  button {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 5px;
+    border: none;
+    background: none;
+    text-align: left;
+    cursor: pointer;
+    font-size: 20px;
+}
+
+button:hover {
+    background-color: #f1f1f1;
+}
+
+button.active {
+    background-color: #ccc;
+    font-weight: bold;
+}
+
+.size-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+}
+
+.size-grid button {
+    width: auto;
+    text-align: center;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    padding: 8px;
+}
+
+.size-grid button.active {
+    background-color: #ccc;
+}
+.container-filter {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    gap: 50px;
+    margin-top: 30px;
+}
+     </style>
+</head>
+<body>
+  <header class="main-header">
+    <div class="logo">Fashion World</div>
+    <nav class="nav-links">
+        <a href="Home.html" >Home</a>
+        <a href="Categories.html" >Categories</a>
+        <a href="Aboutus.html">About Us</a>
+        <a href="Contact.html" >Contact</a>
+    </nav>
+    <div class="header-actions">
+        <!-- Placeholder icons (using simple text/emojis for demonstration) -->
+        <span class="icon" onclick="window.location.href='Cart.html'" style="color: #FF6F61;">🛒</span>
+        <span class="icon" id="open-modal-btn">👤</span>
+
+<!-- The Modal structure -->
+<div id="myModal1" class="modal1">
+    <!-- Modal content -->
+    <div class="modal-content1">
+        <span class="close1">&times;</span>
+        <h1>Welcome to</h1>
+        <h2>Luxury Fashion World</h2>
+        
+        <form>
+            <p>Please Enter Your Mobile Number</p>
+            <div class="phone-input-container">
+                <span class="country-code">+91</span>
+                <input type="tel" id="mobile-number" name="mobile-number" placeholder="Mobile number" required>
+            </div>
+            
+            <a href="#" class="use-email-link">Use E-Mail</a>
+            
+            <div class="recaptcha-info">
+                This site is protected by reCAPTCHA and the Google 
+                <a href="" target="_blank">Privacy Policy</a> and 
+                <a href="" target="_blank">Terms of Service</a> apply. 
+                On Clicking Continue, I agree to Terms of Service & Privacy Policy.
+            </div>
+            
+            <button type="submit" class="continue-btn" onclick="window.location.href='Home.html'">Continue</button>
+        </form>
+    </div>
+</div>
+<script>
+    // Get the modal, the button that opens it, and the close icon
+var modal1 = document.getElementById("myModal1");
+var openBtn = document.getElementById("open-modal-btn");
+var closeBtn = document.getElementsByClassName("close1")[0];
+
+// When the user clicks the button, open the modal by adding the 'show-modal' class
+openBtn.onclick = function() {
+  modal1.classList.add("show-modal");
+}
+
+// When the user clicks on 'x', close the modal by removing the 'show-modal' class
+closeBtn.onclick = function() {
+  modal1.classList.remove("show-modal");
+}
+
+// When the user clicks anywhere outside of the modal content, close it
+window.onclick = function(event) {
+  if (event.target == modal1) {
+    modal1.classList.remove("show-modal");
+  }
+}
+
+</script>
+
+        <button class="login-btn"  id="openModalBtn">Login</button>
+        <div id="myModal" class="modal">
+  <div class="modal-content">
+    <span class="close">&times;</span>
+    <h1 style="font-size: 50px;text-align: center;">LOGIN</h1>
+    <p style="text-align: center;color:gray;font-size: 28px;">How do I start Lorem ipsum dolor At?</p>
+    <div class="login-container">
+        <form class="login-form">
+            <div class="input-group">
+                <i class="fas fa-user"></i>
+                <input type="text" placeholder="Username" required>
+            </div>
+            <div class="input-group">
+                <i class="fas fa-lock"></i>
+                <input type="password" placeholder="Password" required>
+            </div>
+            <button type="submit" class="login-button" onclick="window.location.href='Home.html'">Login</button>
+            <div class="divider">or continue with</div>
+            <button type="button" class="social-button google">
+                <i class="fab fa-google"></i>
+                Continue with google
+            </button>
+            <button type="button" class="social-button apple">
+                <i class="fab fa-apple"></i>
+                Continue with Apple
+            </button>
+        </form>
+    </div>
+</div>
+    </div>
+</header>
+<script>
+// Get the modal
+var modal = document.getElementById("myModal");
+
+// Get the button that opens the modal
+var btn = document.getElementById("openModalBtn");
+
+// Get the <span> element that closes the modal
+var span = document.getElementsByClassName("close")[0];
+
+// When the user clicks the button, open the modal
+btn.onclick = function() {
+  modal.style.display = "block";
+}
+
+// When the user clicks on <span> (x), close the modal
+span.onclick = function() {
+  modal.style.display = "none";
+}
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
+}
+    </script>
+   
+   <div class="container">
+        <div class="filters">
+            <span onclick="window.location.href='Categories.html'">All/</span>
+            <span onclick="window.location.href='Modern.html'" >Modern/</span>
+            <span onclick="window.location.href='Traditional.html'">Traditional/</span>
+            <span onclick="window.location.href='Casual.html'">Casual/</span>
+            <span onclick="window.location.href='Formals.html'" class="act">Formals</span>
+        </div>
+        </div>
+        <div class="container-filter">
+        <div class="filter-container">
+        <div class="section">
+            <h1>Categories</h1>
+            <div class="category-list">
+                <button class="active" id="all-btn">All</button>
+                <button id="toggleButton">Men</button>
+                <button id="women-btn">Women</button>
+                
+            </div>
+        </div>
+
+        <div class="section">
+            <h1>Size</h1>
+            <div class="size-grid">
+                <button>S</button>
+                <button>L</button>
+                <button>M</button>
+                <button>XL</button>
+                <button>XXL</button>
+                <button>XXXL</button>
+            </div>
+        </div>
+</div>
+        <div id="product-all">
+            <div class="product-list" id="product-all">
+            <!-- Product Card 1 -->
+            <div class="product-card">
+                <div class="image-container">
+                    <img src="cat1.jpg" alt="T-Shirt & Jean">
+                    <div class="overlay">
+                        <i class="fas fa-heart heart-icon"></i>
+                        <button class="buy-now">Buy Now</button>
+                    </div>
+                </div>
+                <div class="product-info">
+                    <p class="name">T-Shirt & jean</p>
+                    <p class="price">$800</p>
+                     </div>
+                <p class="wear-type">Casual wear</p>
+            </div>
+
+            <!-- Product Card 2 (Saree) -->
+            <div class="product-card">
+                <div class="image-container">
+                    <img src="cat2.jpg" alt="Saree">
+                    <div class="overlay">
+                        <i class="fas fa-heart heart-icon"></i>
+                        <button class="buy-now">Buy Now</button>
+                    </div>
+                </div>
+                <div class="product-info">
+                    <p class="name">Saree</p>
+                    <p class="price">$2000</p>
+                </div>
+                <p class="wear-type">Traditional wear</p>
+            </div>
+           
+            <div class="product-card">
+                <div class="image-container">
+                    <img src="cat3.jpg" alt="T-Shirt & Jean">
+                    <div class="overlay">
+                        <i class="fas fa-heart heart-icon"></i>
+                        <button class="buy-now">Buy Now</button>
+                    </div>
+                </div>
+                <div class="product-info">
+                    <p class="name">T-Shirt & jean</p>
+                    <p class="price">$800</p>
+                </div>
+                <p class="wear-type">Casual wear</p>
+            </div>
+            <div class="product-card">
+                <div class="image-container">
+                    <img src="cat4.jpg" alt="T-Shirt & Jean">
+                    <div class="overlay">
+                        <i class="fas fa-heart heart-icon"></i>
+                        <button class="buy-now">Buy Now</button>
+                    </div>
+                </div>
+                <div class="product-info">
+                    <p class="name">Kurti</p>
+                    <p class="price">$500</p>
+                </div>
+                <p class="wear-type">Festive wear</p>
+            </div>
+            <div class="product-card">
+                <div class="image-container">
+                    <img src="cat4.jpg" alt="T-Shirt & Jean">
+                    <div class="overlay">
+                        <i class="fas fa-heart heart-icon"></i>
+                        <button class="buy-now">Buy Now</button>
+                    </div>
+                </div>
+                <div class="product-info">
+                    <p class="name">Kurti</p>
+                    <p class="price">$500</p>
+                </div>
+                <p class="wear-type">Festive wear</p>
+            </div>
+            <div class="product-card">
+                <div class="image-container">
+                    <img src="cat2.jpg" alt="T-Shirt & Jean">
+                    <div class="overlay">
+                        <i class="fas fa-heart heart-icon"></i>
+                        <button class="buy-now">Buy Now</button>
+                    </div>
+                </div>
+                <div class="product-info">
+                    <p class="name">Saree</p>
+                    <p class="price">$2000</p>
+                </div>
+                <p class="wear-type">Traditional wear</p>
+            </div>
+            <div class="product-card">
+                <div class="image-container">
+                    <img src="cat5.jpg" alt="T-Shirt & Jean">
+                    <div class="overlay">
+                        <i class="fas fa-heart heart-icon"></i>
+                        <button class="buy-now">Buy Now</button>
+                    </div>
+                </div>
+                <div class="product-info">
+                    <p class="name">Suit</p>
+                    <p class="price">$1000</p>
+                </div>
+                <p class="wear-type">Formal wear</p>
+            </div>
+            <div class="product-card">
+                <div class="image-container">
+                    <img src="cat1.jpg" alt="T-Shirt & Jean">
+                    <div class="overlay">
+                        <i class="fas fa-heart heart-icon"></i>
+                        <button class="buy-now">Buy Now</button>
+                    </div>
+                </div>
+                <div class="product-info">
+                    <p class="name">T-Shirt & jean</p>
+                    <p class="price">$800</p>
+                </div>
+                <p class="wear-type">Casual wear</p>
+            </div>
+            <div class="product-card">
+                <div class="image-container">
+                    <img src="cat6.jpg" alt="T-Shirt & Jean">
+                    <div class="overlay">
+                        <i class="fas fa-heart heart-icon"></i>
+                        <button class="buy-now">Buy Now</button>
+                    </div>
+                </div>
+             <div class="product-info">
+                    <p class="name">T-Shirt & jean</p>
+                    <p class="price">$800</p>
+                </div>
+                <p class="wear-type">Casual wear</p>
+            </div>
+            <div class="product-card">
+                <div class="image-container">
+                    <img src="cat1.jpg" alt="T-Shirt & Jean">
+                    <div class="overlay">
+                        <i class="fas fa-heart heart-icon"></i>
+                        <button class="buy-now">Buy Now</button>
+                    </div>
+                </div>
+             <div class="product-info">
+                    <p class="name">T-Shirt & jean</p>
+                    <p class="price">$800</p>
+                </div>
+                <p class="wear-type">Casual wear</p>
+            </div><div class="product-card">
+                <div class="image-container">
+                    <img src="cat1.jpg" alt="T-Shirt & Jean">
+                    <div class="overlay">
+                        <i class="fas fa-heart heart-icon"></i>
+                        <button class="buy-now">Buy Now</button>
+                    </div>
+                </div>
+             <div class="product-info">
+                    <p class="name">T-Shirt & jean</p>
+                    <p class="price">$800</p>
+                </div>
+                <p class="wear-type">Casual wear</p>
+            </div>
+            <div class="product-card">
+                <div class="image-container">
+                    <img src="cat6.jpg" alt="T-Shirt & Jean">
+                    <div class="overlay">
+                        <i class="fas fa-heart heart-icon"></i>
+                        <button class="buy-now">Buy Now</button>
+                    </div>
+                </div>
+             <div class="product-info">
+                    <p class="name">T-Shirt & jean</p>
+                    <p class="price">$800</p>
+                </div>
+                <p class="wear-type">Casual wear</p>
+            </div>
+            </div>
+            </div>
+
+             <div id="product-men" style="display:none;">
+        <div class="product-list">
+            <!-- Product Card 1 -->
+            <div class="product-card">
+                <div class="image-container">
+                    <img src="fm1.jpg" alt="T-Shirt & Jean">
+                    <div class="overlay">
+                        <i class="fas fa-heart heart-icon"></i>
+                        <button class="buy-now">Buy Now</button>
+                    </div>
+                </div>
+                <div class="product-info">
+                    <p class="name">T-Shirt & jean</p>
+                    <p class="price">$800</p>
+                     </div>
+                <p class="wear-type">Casual wear</p>
+            </div>
+
+            <!-- Product Card 2 (Saree) -->
+            <div class="product-card">
+                <div class="image-container">
+                    <img src="fm1.jpg " alt="Saree">
+                    <div class="overlay">
+                        <i class="fas fa-heart heart-icon"></i>
+                        <button class="buy-now">Buy Now</button>
+                    </div>
+                </div>
+                <div class="product-info">
+                    <p class="name">T-shirt & Jean</p>
+                    <p class="price">$2000</p>
+                </div>
+                <p class="wear-type">Traditional wear</p>
+            </div>
+           
+            <div class="product-card">
+                <div class="image-container">
+                    <img src="fm2.jpg" alt="T-Shirt & Jean">
+                    <div class="overlay">
+                        <i class="fas fa-heart heart-icon"></i>
+                        <button class="buy-now">Buy Now</button>
+                    </div>
+                </div>
+                <div class="product-info">
+                    <p class="name">T-Shirt & jean</p>
+                    <p class="price">$800</p>
+                </div>
+                <p class="wear-type">Casual wear</p>
+            </div>
+            <div class="product-card">
+                <div class="image-container">
+                    <img src="fm3.jpg" alt="T-Shirt & Jean">
+                    <div class="overlay">
+                        <i class="fas fa-heart heart-icon"></i>
+                        <button class="buy-now">Buy Now</button>
+                    </div>
+                </div>
+                <div class="product-info">
+                    <p class="name">Suit</p>
+                    <p class="price">$500</p>
+                </div>
+                <p class="wear-type">Festive wear</p>
+            </div>
+            <div class="product-card">
+                <div class="image-container">
+                    <img src="fm3.jpg" alt="T-Shirt & Jean">
+                    <div class="overlay">
+                        <i class="fas fa-heart heart-icon"></i>
+                        <button class="buy-now">Buy Now</button>
+                    </div>
+                </div>
+                <div class="product-info">
+                    <p class="name">Suit</p>
+                    <p class="price">$500</p>
+                </div>
+                <p class="wear-type">Festive wear</p>
+            </div>
+            <div class="product-card">
+                <div class="image-container">
+                    <img src="fm4.jpg" alt="T-Shirt & Jean">
+                    <div class="overlay">
+                        <i class="fas fa-heart heart-icon"></i>
+                        <button class="buy-now">Buy Now</button>
+                    </div>
+                </div>
+                <div class="product-info">
+                    <p class="name">Suit</p>
+                    <p class="price">$2000</p>
+                </div>
+                <p class="wear-type">Traditional wear</p>
+            </div>
+            <div class="product-card">
+                <div class="image-container">
+                    <img src="fm5.jpg" alt="T-Shirt & Jean">
+                    <div class="overlay">
+                        <i class="fas fa-heart heart-icon"></i>
+                        <button class="buy-now">Buy Now</button>
+                    </div>
+                </div>
+                <div class="product-info">
+                    <p class="name">Suit</p>
+                    <p class="price">$1000</p>
+                </div>
+                <p class="wear-type">Formal wear</p>
+            </div>
+            <div class="product-card">
+                <div class="image-container">
+                    <img src="fm5.jpg" alt="T-Shirt & Jean">
+                    <div class="overlay">
+                        <i class="fas fa-heart heart-icon"></i>
+                        <button class="buy-now">Buy Now</button>
+                    </div>
+                </div>
+                <div class="product-info">
+                    <p class="name">T-Shirt & jean</p>
+                    <p class="price">$800</p>
+                </div>
+                <p class="wear-type">Casual wear</p>
+            </div>
+            <div class="product-card">
+                <div class="image-container">
+                    <img src="fm3.jpg" alt="T-Shirt & Jean">
+                    <div class="overlay">
+                        <i class="fas fa-heart heart-icon"></i>
+                        <button class="buy-now">Buy Now</button>
+                    </div>
+                </div>
+             <div class="product-info">
+                    <p class="name">T-Shirt & jean</p>
+                    <p class="price">$800</p>
+                </div>
+                <p class="wear-type">Casual wear</p>
+            </div>
+            <div class="product-card">
+                <div class="image-container">
+                    <img src="fm3.jpg" alt="T-Shirt & Jean">
+                    <div class="overlay">
+                        <i class="fas fa-heart heart-icon"></i>
+                        <button class="buy-now">Buy Now</button>
+                    </div>
+                </div>
+             <div class="product-info">
+                    <p class="name">T-Shirt & jean</p>
+                    <p class="price">$800</p>
+                </div>
+                <p class="wear-type">Casual wear</p>
+            </div><div class="product-card">
+                <div class="image-container">
+                    <img src="fm2.jpg" alt="T-Shirt & Jean">
+                    <div class="overlay">
+                        <i class="fas fa-heart heart-icon"></i>
+                        <button class="buy-now">Buy Now</button>
+                    </div>
+                </div>
+             <div class="product-info">
+                    <p class="name">T-Shirt & jean</p>
+                    <p class="price">$800</p>
+                </div>
+                <p class="wear-type">Casual wear</p>
+            </div>
+            <div class="product-card">
+                <div class="image-container">
+                    <img src="fm4.jpg" alt="T-Shirt & Jean">
+                    <div class="overlay">
+                        <i class="fas fa-heart heart-icon"></i>
+                        <button class="buy-now">Buy Now</button>
+                    </div>
+                </div>
+             <div class="product-info">
+                    <p class="name">T-Shirt & jean</p>
+                    <p class="price">$800</p>
+                </div>
+                <p class="wear-type">Casual wear</p>
+            </div>
+            </div>
+            </div>
+           
+                  
+            <div id="product-women" style="display:none;">
+            <div class="product-list" >
+            <!-- Product Card 1 -->
+            <div class="product-card">
+                <div class="image-container">
+                    <img src="fw1.jpg" alt="T-Shirt & Jean">
+                    <div class="overlay">
+                        <i class="fas fa-heart heart-icon"></i>
+                        <button class="buy-now">Buy Now</button>
+                    </div>
+                </div>
+                <div class="product-info">
+                    <p class="name">T-Shirt & jean</p>
+                    <p class="price">$800</p>
+                     </div>
+                <p class="wear-type">Casual wear</p>
+            </div>
+
+            <!-- Product Card 2 (Saree) -->
+            <div class="product-card">
+                <div class="image-container">
+                    <img src="fw1.jpg" alt="Saree">
+                    <div class="overlay">
+                        <i class="fas fa-heart heart-icon"></i>
+                        <button class="buy-now">Buy Now</button>
+                    </div>
+                </div>
+                <div class="product-info">
+                    <p class="name">Suit</p>
+                    <p class="price">$2000</p>
+                </div>
+                <p class="wear-type">Traditional wear</p>
+            </div>
+           
+            <div class="product-card">
+                <div class="image-container">
+                    <img src="Default3.jpg" alt="T-Shirt & Jean">
+                    <div class="overlay">
+                        <i class="fas fa-heart heart-icon"></i>
+                        <button class="buy-now">Buy Now</button>
+                    </div>
+                </div>
+                <div class="product-info">
+                    <p class="name">T-Shirt & jean</p>
+                    <p class="price">$800</p>
+                </div>
+                <p class="wear-type">Casual wear</p>
+            </div>
+            <div class="product-card">
+                <div class="image-container">
+                    <img src="fw3.jpg" alt="T-Shirt & Jean">
+                    <div class="overlay">
+                        <i class="fas fa-heart heart-icon"></i>
+                        <button class="buy-now">Buy Now</button>
+                    </div>
+                </div>
+                <div class="product-info">
+                    <p class="name">Suit</p>
+                    <p class="price">$500</p>
+                </div>
+                <p class="wear-type">Festive wear</p>
+            </div>
+            <div class="product-card">
+                <div class="image-container">
+                    <img src="fw4.jpg" alt="T-Shirt & Jean">
+                    <div class="overlay">
+                        <i class="fas fa-heart heart-icon"></i>
+                        <button class="buy-now">Buy Now</button>
+                    </div>
+                </div>
+                <div class="product-info">
+                    <p class="name">Suit</p>
+                    <p class="price">$500</p>
+                </div>
+                <p class="wear-type">Festive wear</p>
+            </div>
+            <div class="product-card">
+                <div class="image-container">
+                    <img src="fw5.jpg" alt="T-Shirt & Jean">
+                    <div class="overlay">
+                        <i class="fas fa-heart heart-icon"></i>
+                        <button class="buy-now">Buy Now</button>
+                    </div>
+                </div>
+                <div class="product-info">
+                    <p class="name">Suit</p>
+                    <p class="price">$2000</p>
+                </div>
+                <p class="wear-type">Traditional wear</p>
+            </div>
+            <div class="product-card">
+                <div class="image-container">
+                    <img src="fw5.jpg" alt="T-Shirt & Jean">
+                    <div class="overlay">
+                        <i class="fas fa-heart heart-icon"></i>
+                        <button class="buy-now">Buy Now</button>
+                    </div>
+                </div>
+                <div class="product-info">
+                    <p class="name">Suit</p>
+                    <p class="price">$1000</p>
+                </div>
+                <p class="wear-type">Formal wear</p>
+            </div>
+            <div class="product-card">
+                <div class="image-container">
+                    <img src="fw6.jpg" alt="T-Shirt & Jean">
+                    <div class="overlay">
+                        <i class="fas fa-heart heart-icon"></i>
+                        <button class="buy-now">Buy Now</button>
+                    </div>
+                </div>
+                <div class="product-info">
+                    <p class="name">T-Shirt & jean</p>
+                    <p class="price">$800</p>
+                </div>
+                <p class="wear-type">Casual wear</p>
+            </div>
+            <div class="product-card">
+                <div class="image-container">
+                    <img src="fw6.jpg" alt="T-Shirt & Jean">
+                    <div class="overlay">
+                        <i class="fas fa-heart heart-icon"></i>
+                        <button class="buy-now">Buy Now</button>
+                    </div>
+                </div>
+             <div class="product-info">
+                    <p class="name">T-Shirt & jean</p>
+                    <p class="price">$800</p>
+                </div>
+                <p class="wear-type">Casual wear</p>
+            </div>
+            <div class="product-card">
+                <div class="image-container">
+                    <img src="fw4.jpg" alt="T-Shirt & Jean">
+                    <div class="overlay">
+                        <i class="fas fa-heart heart-icon"></i>
+                        <button class="buy-now">Buy Now</button>
+                    </div>
+                </div>
+             <div class="product-info">
+                    <p class="name">T-Shirt & jean</p>
+                    <p class="price">$800</p>
+                </div>
+                <p class="wear-type">Casual wear</p>
+            </div><div class="product-card">
+                <div class="image-container">
+                    <img src="fw4.jpg" alt="T-Shirt & Jean">
+                    <div class="overlay">
+                        <i class="fas fa-heart heart-icon"></i>
+                        <button class="buy-now">Buy Now</button>
+                    </div>
+                </div>
+             <div class="product-info">
+                    <p class="name">T-Shirt & jean</p>
+                    <p class="price">$800</p>
+                </div>
+                <p class="wear-type">Casual wear</p>
+            </div>
+            <div class="product-card">
+                <div class="image-container">
+                    <img src="Default3.jpg" alt="T-Shirt & Jean">
+                    <div class="overlay">
+                        <i class="fas fa-heart heart-icon"></i>
+                        <button class="buy-now">Buy Now</button>
+                    </div>
+                </div>
+             <div class="product-info">
+                    <p class="name">T-Shirt & jean</p>
+                    <p class="price">$800</p>
+                </div>
+                <p class="wear-type">Casual wear</p>
+            </div>
+            </div>
+            </div>
+
+            
+    
+        </div>
+    <button class="back-button" onclick="window.location.href='Categories.html'">
+    &larr; Back
+    </button>
+    <script>
+        // Get references to the elements
+const toggleButton = document.getElementById('toggleButton');
+const hiddenSection = document.getElementById('product-all');
+const visibleSection = document.getElementById('product-men');
+const allButton = document.getElementById('all-btn');
+const womenButton = document.getElementById('women-btn');
+const womenSection = document.getElementById('product-women');
+
+// Add an event listener to the button  
+womenButton.addEventListener('click', function() {
+    // Toggle the display of 'hiddenSection'
+   visibleSection.style.display = 'none';
+   hiddenSection.style.display = 'none';
+   womenSection.style.display = 'block';
+   womenButton.style.backgroundColor = '#ccc';
+   allButton.style.backgroundColor = 'transparent';
+   toggleButton.style.backgroundColor = 'transparent'; 
+   
+});
+
+allButton.addEventListener('click', function() {
+    // Toggle the display of 'hiddenSection'
+   hiddenSection.style.display = 'block';
+   visibleSection.style.display = 'none';
+   allButton.style.backgroundColor = '#ccc';
+   toggleButton.style.backgroundColor = 'transparent';
+   womenSection.style.display = 'none';
+   womenButton.style.backgroundColor = 'transparent';
+   
+    
+});
+
+// Add an event listener to the button
+toggleButton.addEventListener('click', function() {
+    // Toggle the display of 'hiddenSection'
+   visibleSection.style.display = 'block';
+   hiddenSection.style.display = 'none';
+   toggleButton.style.backgroundColor = '#ccc';
+   allButton.style.backgroundColor = 'transparent';
+   womenSection.style.display = 'none';
+   womenButton.style.backgroundColor = 'transparent';
+   
+    
+});
+
+
+
+    </script>
+    <script>
+    // Define the URL where users should be redirected
+    const redirectURL = "Checkout.html"; 
+
+    // Find all elements on the page with the class 'buy-now-btn'
+    const buyButtons = document.querySelectorAll('.buy-now');
+
+    // Loop through the list of buttons found
+    buyButtons.forEach(button => {
+        // Add a 'click' event listener to each button
+        button.addEventListener('click', () => {
+            // When clicked, change the browser's current location to the specified URL
+            window.location.href = redirectURL;
+        });
+    });
+</script>
+
+
+   <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-column">
+                <h4 class="footer-logo">LUXE.</h4>
+                <p>Premium fashion for the modern connoisseur. Elevate your style with our curated collections.</p>
+                <div class="social-icons">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                </div>
+            </div>
+            <div class="footer-column">
+                <h4>Shop</h4>
+                <ul>
+                    <li><a href="#">Women</a></li>
+                    <li><a href="#">Men</a></li>
+                    <li><a href="#">Accessories</a></li>
+                    <li><a href="#">New Arrivals</a></li>
+                    <li><a href="#">Sale</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h4>Help</h4>
+                <ul>
+                    <li><a href="#">Customer Service</a></li>
+                    <li><a href="#">My Account</a></li>
+                    <li><a href="#">Find a Store</a></li>
+                    <li><a href="#">Shipping & Returns</a></li>
+                    <li><a href="#">FAQ</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h4>About</h4>
+                <ul>
+                    <li><a href="#">Our Story</a></li>
+                    <li><a href="#">Careers</a></li>
+                    <li><a href="#">Corporate Responsibility</a></li>
+                    <li><a href="#">Press</a></li>
+                </ul>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

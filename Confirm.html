@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fashion Website</title>
+    <link rel="stylesheet" href="Layout10.css">
+     <link href="https://fonts.cdnfonts.com/css/fashion-fetish" rel="stylesheet">
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com">
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+<style>
+    .progress-container {
+    width: 60%;
+    margin-left: 300px;
+    margin-top: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: sans-serif;
+    font-size: 24px; /* As requested */
+}
+
+.step {
+    display: flex;
+    align-items: center;
+    color: #a0a0a0; /* Default color for inactive steps */
+}
+
+.step.active1 {
+    color: #000; /* Color for the active step text */
+    font-weight: bold;
+}
+
+.circle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px; /* Adjust size as needed */
+    height: 36px;
+    border-radius: 50%;
+    border: 2px solid #a0a0a0;
+    margin-right: 10px;
+    font-size: 16px; /* Smaller font size for the number in the circle */
+}
+
+.step.active1 .circle {
+    background-color: #ff4d4d; /* Red background for active circle */
+    color: #fff; /* White number color */
+    border-color: #ff4d4d;
+}
+
+.line {
+    flex-grow: 1;
+    height: 2px;
+    background-color: #a0a0a0; /* Default line color */
+    margin: 0 10px;
+    width: 20px; /* Adjust line length */
+}
+
+.line.active-line {
+    background-color: #ff4d4d; /* Red color for the active line */
+}
+
+.label {
+    font-size: 24px;
+}
+
+.container {
+    background-color: rgb(255, 253, 253);
+    padding: 40px;
+    border-radius: 8px;
+    margin-top: 100px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    width: 100%;
+    max-width: 600px;
+    text-align: center;
+    margin-left: 400px;
+}
+
+.confirmation-header {
+    margin-bottom: 30px;
+}
+
+.checkmark-circle {
+    background-color: #28a745; /* Green color for success */
+    color: #ffffff;
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 34px;
+    font-weight: bold;
+    margin: 0 auto 15px auto;
+}
+
+h1 {
+    color: #333;
+    font-size: 28px;
+    margin: 0 0 10px 0;
+}
+
+p {
+    color: #666;
+    font-size: 20px;
+    margin: 0;
+}
+
+.order-summary {
+    border-top: 1px solid #e3e3e3;
+    padding-top: 20px;
+    text-align: left;
+}
+
+h2 {
+    color: #333;
+    font-size: 24px;
+    margin: 0 0 20px 0;
+}
+
+.item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.item img {
+    width: 60px;
+    height: 60px;
+    border-radius: 4px;
+    margin-right: 15px;
+}
+
+.item-details {
+    flex-grow: 1;
+}
+
+.item-name {
+    font-weight: bold;
+    color: #333;
+    font-size: 20px;
+}
+
+.item-quantity {
+    color: #999;
+    font-size: 18px;
+}
+
+.item-price {
+    font-weight: bold;
+    color: #333;
+    font-size: 24px;
+}
+
+.totals-section {
+    border-top: 1px solid #eee;
+    padding-top: 20px;
+    margin-top: 20px;
+}
+
+.total-row {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+    color: #666;
+    font-size: 20px;
+}
+
+.total-amount {
+    font-size: 20px;
+    color: #333;
+}
+
+
+.container1 {
+    background-color: white;
+    padding: 40px;
+    border-radius: 8px;
+    margin-left: 450px;
+    text-align: center;
+    max-width: 500px;
+    width: 100%;
+    margin-top: 50px;
+}
+
+h1 {
+    color: #212529;
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+}
+
+p {
+    color: #495057;
+    margin-bottom: 20px;
+    line-height: 1.5;
+}
+
+.buttons {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 25px;
+}
+
+.buttons button {
+    padding: 12px 24px;
+    border: none;
+    border-radius: 4px;
+    font-size: 14px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    flex-grow: 1;
+    max-width: 200px;
+}
+ button.primary {
+    background-color: #0056b3; /* Darker blue on hover */
+    color: white;
+}
+
+button.primary:hover {
+    background-color: #004494;
+}
+
+button.secondary {
+    background-color: white;
+    color: #007bff;
+    border: 1px solid #007bff;
+}
+
+button.secondary:hover {
+    background-color: #e6f2ff;
+}
+
+</style>
+    </head>
+<body>
+  <header class="main-header">
+    <div class="logo">Fashion World</div>
+    <nav class="nav-links">
+        <a href="Home.html" >Home</a>
+        <a href="Categories.html" >Categories</a>
+        <a href="Aboutus.html">About Us</a>
+        <a href="Contact.html" >Contact</a>
+    </nav>
+    <div class="header-actions">
+        <!-- Placeholder icons (using simple text/emojis for demonstration) -->
+        <span class="icon" onclick="window.location.href='Cart.html'" style="color: #FF6F61;">🛒</span>
+        <span class="icon" id="open-modal-btn">👤</span>
+
+<!-- The Modal structure -->
+<div id="myModal1" class="modal1">
+    <!-- Modal content -->
+    <div class="modal-content1">
+        <span class="close1">&times;</span>
+        <h1>Welcome to</h1>
+        <h2>Luxury Fashion World</h2>
+        
+        <form>
+            <p>Please Enter Your Mobile Number</p>
+            <div class="phone-input-container">
+                <span class="country-code">+91</span>
+                <input type="tel" id="mobile-number" name="mobile-number" placeholder="Mobile number" required>
+            </div>
+            
+            <a href="#" class="use-email-link">Use E-Mail</a>
+            
+            <div class="recaptcha-info">
+                This site is protected by reCAPTCHA and the Google 
+                <a href="" target="_blank">Privacy Policy</a> and 
+                <a href="" target="_blank">Terms of Service</a> apply. 
+                On Clicking Continue, I agree to Terms of Service & Privacy Policy.
+            </div>
+            
+            <button type="submit" class="continue-btn" onclick="window.location.href='Home.html'">Continue</button>
+        </form>
+    </div>
+</div>
+<script>
+    // Get the modal, the button that opens it, and the close icon
+var modal1 = document.getElementById("myModal1");
+var openBtn = document.getElementById("open-modal-btn");
+var closeBtn = document.getElementsByClassName("close1")[0];
+
+// When the user clicks the button, open the modal by adding the 'show-modal' class
+openBtn.onclick = function() {
+  modal1.classList.add("show-modal");
+}
+
+// When the user clicks on 'x', close the modal by removing the 'show-modal' class
+closeBtn.onclick = function() {
+  modal1.classList.remove("show-modal");
+}
+
+// When the user clicks anywhere outside of the modal content, close it
+window.onclick = function(event) {
+  if (event.target == modal1) {
+    modal1.classList.remove("show-modal");
+  }
+}
+
+</script>
+
+        <button class="login-btn"  id="openModalBtn">Login</button>
+        <div id="myModal" class="modal">
+  <div class="modal-content">
+    <span class="close">&times;</span>
+    <h1 style="font-size: 50px;text-align: center;">LOGIN</h1>
+    <p style="text-align: center;color:gray;font-size: 28px;">How do I start Lorem ipsum dolor At?</p>
+    <div class="login-container">
+        <form class="login-form">
+            <div class="input-group">
+                <i class="fas fa-user"></i>
+                <input type="text" placeholder="Username" required>
+            </div>
+            <div class="input-group">
+                <i class="fas fa-lock"></i>
+                <input type="password" placeholder="Password" required>
+            </div>
+            <button type="submit" class="login-button" onclick="window.location.href='Home.html'">Login</button>
+            <div class="divider">or continue with</div>
+            <button type="button" class="social-button google">
+                <i class="fab fa-google"></i>
+                Continue with google
+            </button>
+            <button type="button" class="social-button apple">
+                <i class="fab fa-apple"></i>
+                Continue with Apple
+            </button>
+        </form>
+    </div>
+</div>
+    </div>
+</header>
+<script>
+// Get the modal
+var modal = document.getElementById("myModal");
+
+// Get the button that opens the modal
+var btn = document.getElementById("openModalBtn");
+
+// Get the <span> element that closes the modal
+var span = document.getElementsByClassName("close")[0];
+
+// When the user clicks the button, open the modal
+btn.onclick = function() {
+  modal.style.display = "block";
+}
+
+// When the user clicks on <span> (x), close the modal
+span.onclick = function() {
+  modal.style.display = "none";
+}
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
+}
+    </script>
+    
+    <h1 style="text-align: center;margin-top: 100px; font-size: 40px;">Thank You!</h1>
+
+    <div class="progress-container">
+    <div class="step active1">
+        <span class="circle">1</span>
+        <span class="label">Shipping</span>
+    </div>
+    <div class="line active-line"></div>
+    <div class="step active1">
+        <span class="circle">2</span>
+        <span class="label">Payment</span>
+    </div>
+    <div class="line active-line"></div>
+    <div class="step active1">
+        <span class="circle">3</span>
+        <span class="label">Confirm</span>
+    </div>
+</div> 
+   <div class="container">
+        <div class="confirmation-header">
+            <div class="checkmark-circle">
+                <!-- Simple checkmark symbol -->
+                &#10004;
+            </div>
+            <h1>Payment Confirmed</h1>
+            <p>Thank you for your purchase! Your order has been successfully processed.</p>
+        </div>
+
+        <div class="order-summary">
+            <h2>Order Summary</h2>
+            <div class="item-list">
+                <div class="item">
+                    <img src="Check1.png" alt="Wireless Headphones">
+                    <div class="item-details">
+                        <div class="item-name">Wireless Headphones</div>
+                        <div class="item-quantity">Quantity: 1</div>
+                    </div>
+                    <div class="item-price">$99.99</div>
+                </div>
+                <div class="item">
+                    <img src="Check2.png" alt="Smart Watch">
+                    <div class="item-details">
+                        <div class="item-name">Smart Watch</div>
+                        <div class="item-quantity">Quantity: 1</div>
+                    </div>
+                    <div class="item-price">$149.99</div>
+                </div>
+            </div>
+
+            <div class="totals-section">
+                <div class="total-row">
+                    <span>Subtotal</span>
+                    <span>$249.98</span>
+                </div>
+                <div class="total-row">
+                    <span>Shipping</span>
+                    <span>$15.00</span>
+                </div>
+                <div class="total-row total-amount">
+                    <strong>Total</strong>
+                    <strong>$264.98</strong>
+                </div>
+            </div>
+        </div>
+    </div>
+   
+    <div class="container1">
+    <h1>Next Steps</h1>
+    <p>You will receive an email confirmation shortly with your order details and tracking information.</p>
+    <p>If you have any questions, please contact our support team.</p>
+    <div class="buttons">
+        <button class="primary" onclick="window.location.href='Home.html'">Continue Shopping</button>
+        <button class="secondary" onclick="window.location.href='Tracking.html'">View Tracking Details</button>
+    </div>
+</div>
+
+
+   <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-column">
+                <h4 class="footer-logo">LUXE.</h4>
+                <p>Premium fashion for the modern connoisseur. Elevate your style with our curated collections.</p>
+                <div class="social-icons">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                </div>
+            </div>
+            <div class="footer-column">
+                <h4>Shop</h4>
+                <ul>
+                    <li><a href="#">Women</a></li>
+                    <li><a href="#">Men</a></li>
+                    <li><a href="#">Accessories</a></li>
+                    <li><a href="#">New Arrivals</a></li>
+                    <li><a href="#">Sale</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h4>Help</h4>
+                <ul>
+                    <li><a href="#">Customer Service</a></li>
+                    <li><a href="#">My Account</a></li>
+                    <li><a href="#">Find a Store</a></li>
+                    <li><a href="#">Shipping & Returns</a></li>
+                    <li><a href="#">FAQ</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h4>About</h4>
+                <ul>
+                    <li><a href="#">Our Story</a></li>
+                    <li><a href="#">Careers</a></li>
+                    <li><a href="#">Corporate Responsibility</a></li>
+                    <li><a href="#">Press</a></li>
+                </ul>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

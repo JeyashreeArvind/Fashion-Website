@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fashion Website</title>
+<link rel="stylesheet" href="Layout10.css">
+     <link href="https://fonts.cdnfonts.com/css/fashion-fetish" rel="stylesheet">
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com">
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+     <style>
+        body{
+            background-color: white;
+        }
+        .container {
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+            margin: auto;
+            flex-wrap: wrap;
+        }
+        .item-card, .price-summary {
+            background: white;
+            padding: 20px;
+        }
+        .item-card {
+            display: flex;
+            align-items: center;
+            margin-left: 100px;
+            width: 70%;
+            margin-bottom: 20px;
+        }
+        .item-card img {
+            width: 300px;
+            height: auto;
+            margin-right: 20px;
+            border-radius: 5px;
+        }
+        .item-details {
+            flex-grow: 1;
+        }
+        .item-details h3 {
+            margin: 0 0 5px 0;
+            font-size: 24px;
+            font-weight: bold;
+        }
+        .item-details p {
+            margin: 0;
+            font-size: 24px;
+            color: #555;
+        }
+        .quantity-control {
+            display: flex;
+            align-items: center;
+            margin-top: 10px;
+        }
+        .quantity-btn {
+            background-color: #f1f1f1;
+            border: none;
+            padding: 5px 10px;
+            cursor: pointer;
+            font-size: 16px;
+            border-radius: 3px;
+        }
+        .quantity-display {
+            padding: 0 15px;
+            font-size: 24px;
+        }
+        .delete-btn {
+            background-color: transparent;
+            border: none;
+            color: #e74c3c;
+            font-size: 24px;
+            font-weight: bolder;
+            cursor: pointer;
+            margin-left: 10px;
+        }
+        .price {
+            font-weight: bold;
+            font-size: 24px;
+            text-align: right;
+            width: 100px;
+        }
+            .price-summary {
+            width: 300px;
+            margin-right: 200px;
+            font-size: 24px;
+        }
+        .price-summary h2 {
+            margin-top: 0;
+            font-size: 24px;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 10px;
+        }
+        .summary-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 5px 0;
+        }
+        .summary-row.total {
+            border-top: 1px solid #eee;
+            margin-top: 10px;
+            padding-top: 10px;
+            font-weight: bold;
+        }
+        .summary-value {
+            font-weight: bold;
+        }
+        /* Specific image classes for visual representation (placeholders) */
+        .img-placeholder-1 {
+            background-color: #ccc; /* Placeholder for actual image */
+            
+        }
+        .img-placeholder-1 img{
+            width: 300px;
+        }
+        .img-placeholder-2 {
+            background-color: #ddd; /* Placeholder for actual image */
+        }
+     </style>
+</head>
+<body>
+ <header class="main-header">
+    <div class="logo">Fashion World</div>
+    <nav class="nav-links">
+        <a href="Home.html" >Home</a>
+        <a href="Categories.html" >Categories</a>
+        <a href="Aboutus.html">About Us</a>
+        <a href="Contact.html" >Contact</a>
+    </nav>
+    <div class="header-actions">
+        <!-- Placeholder icons (using simple text/emojis for demonstration) -->
+        <span class="icon" onclick="window.location.href='Cart.html'" style="color: #FF6F61;">🛒</span>
+        <span class="icon" id="open-modal-btn">👤</span>
+
+<!-- The Modal structure -->
+<div id="myModal1" class="modal1">
+    <!-- Modal content -->
+    <div class="modal-content1">
+        <span class="close1">&times;</span>
+        <h1>Welcome to</h1>
+        <h2>Luxury Fashion World</h2>
+        
+        <form>
+            <p>Please Enter Your Mobile Number</p>
+            <div class="phone-input-container">
+                <span class="country-code">+91</span>
+                <input type="tel" id="mobile-number" name="mobile-number" placeholder="Mobile number" required>
+            </div>
+            
+            <a href="#" class="use-email-link">Use E-Mail</a>
+            
+            <div class="recaptcha-info">
+                This site is protected by reCAPTCHA and the Google 
+                <a href="" target="_blank">Privacy Policy</a> and 
+                <a href="" target="_blank">Terms of Service</a> apply. 
+                On Clicking Continue, I agree to Terms of Service & Privacy Policy.
+            </div>
+            
+            <button type="submit" class="continue-btn" onclick="window.location.href='Home.html'">Continue</button>
+        </form>
+    </div>
+</div>
+<script>
+    // Get the modal, the button that opens it, and the close icon
+var modal1 = document.getElementById("myModal1");
+var openBtn = document.getElementById("open-modal-btn");
+var closeBtn = document.getElementsByClassName("close1")[0];
+
+// When the user clicks the button, open the modal by adding the 'show-modal' class
+openBtn.onclick = function() {
+  modal1.classList.add("show-modal");
+}
+
+// When the user clicks on 'x', close the modal by removing the 'show-modal' class
+closeBtn.onclick = function() {
+  modal1.classList.remove("show-modal");
+}
+
+// When the user clicks anywhere outside of the modal content, close it
+window.onclick = function(event) {
+  if (event.target == modal1) {
+    modal1.classList.remove("show-modal");
+  }
+}
+
+</script>
+
+        <button class="login-btn"  id="openModalBtn">Login</button>
+        <div id="myModal" class="modal">
+  <div class="modal-content">
+    <span class="close">&times;</span>
+    <h1 style="font-size: 50px;text-align: center;">LOGIN</h1>
+    <p style="text-align: center;color:gray;font-size: 28px;">How do I start Lorem ipsum dolor At?</p>
+    <div class="login-container">
+        <form class="login-form">
+            <div class="input-group">
+                <i class="fas fa-user"></i>
+                <input type="text" placeholder="Username" required>
+            </div>
+            <div class="input-group">
+                <i class="fas fa-lock"></i>
+                <input type="password" placeholder="Password" required>
+            </div>
+            <button type="submit" class="login-button" onclick="window.location.href='Home.html'">Login</button>
+            <div class="divider">or continue with</div>
+            <button type="button" class="social-button google">
+                <i class="fab fa-google"></i>
+                Continue with google
+            </button>
+            <button type="button" class="social-button apple">
+                <i class="fab fa-apple"></i>
+                Continue with Apple
+            </button>
+        </form>
+    </div>
+</div>
+    </div>
+</header>
+<script>
+// Get the modal
+var modal = document.getElementById("myModal");
+
+// Get the button that opens the modal
+var btn = document.getElementById("openModalBtn");
+
+// Get the <span> element that closes the modal
+var span = document.getElementsByClassName("close")[0];
+
+// When the user clicks the button, open the modal
+btn.onclick = function() {
+  modal.style.display = "block";
+}
+
+// When the user clicks on <span> (x), close the modal
+span.onclick = function() {
+  modal.style.display = "none";
+}
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
+}
+    </script>
+   
+   <h1 style="margin-left: 100px;margin-top: 50px;">Your Cart</h1>
+  <div class="container">
+        <div style="flex-grow: 1;">
+            <!-- Item 1: Wireless Headphones -->
+            <div class="item-card">
+                <!-- Image placeholder, replace with actual <img> tag -->
+                <img src="cart1.png" alt="Wireless Headphones" class="img-placeholder-1">
+                <div class="item-details">
+                    <h3>Western Wear</h3>
+                    <p>Black Colour</p>
+                    <div class="quantity-control">
+                        <button class="quantity-btn" onclick="updateQuantity(this, -1)">-</button>
+                        <span class="quantity-display" id="qty-1">1</span>
+                        <button class="quantity-btn" onclick="updateQuantity(this, 1)">+</button>
+                        <button class="delete-btn">&#128465;</button>
+                    </div>
+                </div>
+                <span class="price">$199.98</span>
+            </div>
+<div class="item-card">
+                <!-- Image placeholder, replace with actual <img> tag -->
+                <img src="cart2.png" alt="Smartwatch" class="img-placeholder-2">
+                <div class="item-details">
+                    <h3>Western Wear</h3>
+                    <p>White colour</p>
+                    <div class="quantity-control">
+                        <button class="quantity-btn" onclick="updateQuantity(this, -1)">-</button>
+                        <span class="quantity-display" id="qty-2">1</span>
+                        <button class="quantity-btn" onclick="updateQuantity(this, 1)">+</button>
+                        <button class="delete-btn">&#128465;</button>
+                    </div>
+                </div>
+                <span class="price">$249.00</span>
+            </div>
+        </div>
+<div class="price-summary">
+            <h2>Price Breakdown</h2>
+            <div class="summary-row">
+                <span>Subtotal</span>
+                <span class="summary-value">$628.95</span>
+            </div>
+            <div class="summary-row">
+                <span>Tax (8%)</span>
+                <span class="summary-value">$50.32</span>
+            </div>
+            <div class="summary-row">
+                <span>Shipping</span>
+                <span class="summary-value">$15.00</span>
+            </div>
+            <div class="summary-row total">
+                <span>Total</span>
+                <span class="summary-value">$694.27</span>
+            </div>
+        </div>
+    </div>
+    <script>
+        // Javascript function to handle the counter logic
+        function updateQuantity(button, delta) {
+            // Find the sibling element with the quantity display
+            const quantityDisplay = button.closest('.quantity-control').querySelector('.quantity-display');
+            let currentQuantity = parseInt(quantityDisplay.textContent);
+            
+            // Calculate new quantity, ensuring it doesn't go below 1 (or 0 if deletion is handled elsewhere)
+            let newQuantity = currentQuantity + delta;
+
+            if (newQuantity >= 1) {
+                quantityDisplay.textContent = newQuantity;
+                // You would typically add logic here to recalculate subtotals and totals in a real application
+            } else if (newQuantity === 0) {
+                 // Optional: handle removal of item if quantity reaches zero
+                 alert("Item quantity cannot be less than 1. Use the trash icon to remove the item completely.");
+            }
+        }
+    </script>
+
+
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-column">
+                <h4 class="footer-logo">LUXE.</h4>
+                <p>Premium fashion for the modern connoisseur. Elevate your style with our curated collections.</p>
+                <div class="social-icons">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                </div>
+            </div>
+            <div class="footer-column">
+                <h4>Shop</h4>
+                <ul>
+                    <li><a href="#">Women</a></li>
+                    <li><a href="#">Men</a></li>
+                    <li><a href="#">Accessories</a></li>
+                    <li><a href="#">New Arrivals</a></li>
+                    <li><a href="#">Sale</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h4>Help</h4>
+                <ul>
+                    <li><a href="#">Customer Service</a></li>
+                    <li><a href="#">My Account</a></li>
+                    <li><a href="#">Find a Store</a></li>
+                    <li><a href="#">Shipping & Returns</a></li>
+                    <li><a href="#">FAQ</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h4>About</h4>
+                <ul>
+                    <li><a href="#">Our Story</a></li>
+                    <li><a href="#">Careers</a></li>
+                    <li><a href="#">Corporate Responsibility</a></li>
+                    <li><a href="#">Press</a></li>
+                </ul>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fashion Website</title>
+    <link rel="stylesheet" href="Layout10.css">
+     <link href="https://fonts.cdnfonts.com/css/fashion-fetish" rel="stylesheet">
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com">
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+     <style>
+        
+.product-container {
+    display: flex;
+    width: 100%;
+    margin: auto;
+    background-color: #fff;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.product-image, .product-details {
+    flex: 1;
+    padding: 40px;
+}
+
+.product-image img {
+    width: 400px;
+    height: 600px;
+    display: block;
+    /* Optional: add some styling for the man and blue background if you use a full image */
+}
+
+.product-title {
+    font-size: 32px;
+    margin-bottom: 10px;
+}
+
+.product-price {
+    font-size: 32px;
+    font-weight: bold;
+    color: #e63946; /* A red color similar to the image's "Buy Now" button */
+    margin-bottom: 20px;
+}
+
+.size-selection p {
+    font-weight: bold;
+    margin-bottom: 10px;
+    font-size: 32px;
+}
+
+.size-options button {
+    padding: 15px 30px;
+    margin: 5px;
+    border: 1px solid #ccc;
+    background-color: #fff;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.size-options button:hover {
+    background-color: #f4f4f4;
+}
+
+.action-buttons {
+    margin-top: 30px;
+}
+
+.add-to-cart-btn, .buy-now-btn {
+    padding: 15px 30px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 24px;
+    margin-right: 10px;
+}
+
+.add-to-cart-btn {
+    background-color: #fff;
+    border: 1px solid #ccc;
+    color: #333;
+}
+
+.buy-now-btn {
+    background-color: #e63946;
+    color: white;
+}
+
+/* Add basic responsiveness for smaller screens */
+@media (max-width: 768px) {
+    .product-container {
+        flex-direction: column;
+    }
+}
+
+     </style>
+</head>
+<body>
+<header class="main-header">
+    <div class="logo">Fashion World</div>
+    <nav class="nav-links">
+        <a href="Home.html" >Home</a>
+        <a href="Categories.html" >Categories</a>
+        <a href="Aboutus.html">About Us</a>
+        <a href="Contact.html" >Contact</a>
+    </nav>
+    <div class="header-actions">
+        <!-- Placeholder icons (using simple text/emojis for demonstration) -->
+        <span class="icon" onclick="window.location.href='Cart.html'" style="color: #FF6F61;">🛒</span>
+        <span class="icon" id="open-modal-btn">👤</span>
+
+<!-- The Modal structure -->
+<div id="myModal1" class="modal1">
+    <!-- Modal content -->
+    <div class="modal-content1">
+        <span class="close1">&times;</span>
+        <h1>Welcome to</h1>
+        <h2>Luxury Fashion World</h2>
+        
+        <form>
+            <p>Please Enter Your Mobile Number</p>
+            <div class="phone-input-container">
+                <span class="country-code">+91</span>
+                <input type="tel" id="mobile-number" name="mobile-number" placeholder="Mobile number" required>
+            </div>
+            
+            <a href="#" class="use-email-link">Use E-Mail</a>
+            
+            <div class="recaptcha-info">
+                This site is protected by reCAPTCHA and the Google 
+                <a href="" target="_blank">Privacy Policy</a> and 
+                <a href="" target="_blank">Terms of Service</a> apply. 
+                On Clicking Continue, I agree to Terms of Service & Privacy Policy.
+            </div>
+            
+            <button type="submit" class="continue-btn" onclick="window.location.href='Home.html'">Continue</button>
+        </form>
+    </div>
+</div>
+<script>
+    // Get the modal, the button that opens it, and the close icon
+var modal1 = document.getElementById("myModal1");
+var openBtn = document.getElementById("open-modal-btn");
+var closeBtn = document.getElementsByClassName("close1")[0];
+
+// When the user clicks the button, open the modal by adding the 'show-modal' class
+openBtn.onclick = function() {
+  modal1.classList.add("show-modal");
+}
+
+// When the user clicks on 'x', close the modal by removing the 'show-modal' class
+closeBtn.onclick = function() {
+  modal1.classList.remove("show-modal");
+}
+
+// When the user clicks anywhere outside of the modal content, close it
+window.onclick = function(event) {
+  if (event.target == modal1) {
+    modal1.classList.remove("show-modal");
+  }
+}
+
+</script>
+
+        <button class="login-btn"  id="openModalBtn">Login</button>
+        <div id="myModal" class="modal">
+  <div class="modal-content">
+    <span class="close">&times;</span>
+    <h1 style="font-size: 50px;text-align: center;">LOGIN</h1>
+    <p style="text-align: center;color:gray;font-size: 28px;">How do I start Lorem ipsum dolor At?</p>
+    <div class="login-container">
+        <form class="login-form">
+            <div class="input-group">
+                <i class="fas fa-user"></i>
+                <input type="text" placeholder="Username" required>
+            </div>
+            <div class="input-group">
+                <i class="fas fa-lock"></i>
+                <input type="password" placeholder="Password" required>
+            </div>
+            <button type="submit" class="login-button" onclick="window.location.href='Home.html'">Login</button>
+            <div class="divider">or continue with</div>
+            <button type="button" class="social-button google">
+                <i class="fab fa-google"></i>
+                Continue with google
+            </button>
+            <button type="button" class="social-button apple">
+                <i class="fab fa-apple"></i>
+                Continue with Apple
+            </button>
+        </form>
+    </div>
+</div>
+    </div>
+</header>
+<script>
+// Get the modal
+var modal = document.getElementById("myModal");
+
+// Get the button that opens the modal
+var btn = document.getElementById("openModalBtn");
+
+// Get the <span> element that closes the modal
+var span = document.getElementsByClassName("close")[0];
+
+// When the user clicks the button, open the modal
+btn.onclick = function() {
+  modal.style.display = "block";
+}
+
+// When the user clicks on <span> (x), close the modal
+span.onclick = function() {
+  modal.style.display = "none";
+}
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
+}
+    </script>
+
+    <div class="product-container">
+        <!-- Product Image Section -->
+        <div class="product-image">
+            <!-- Placeholder for the actual image -->
+            <img src="Frame 2800.jpg" alt="Cotton Cloths for Summer">
+        </div>
+
+        <!-- Product Details Section -->
+        <div class="product-details">
+            <h1>T-Shirt</h1>
+            <h1 class="product-title">Cotton Cloths for Summer</h1>
+            <p class="product-price">**$250**</p>
+
+            <div class="size-selection">
+                <p>Size</p>
+                <div class="size-options">
+                    <button class="size-btn">S</button>
+                    <button class="size-btn">M</button>
+                    <button class="size-btn">L</button>
+                    <button class="size-btn">XL</button>
+                    <button class="size-btn">XXL</button>
+                </div>
+            </div>
+            <div class="action-buttons">
+                <button class="add-to-cart-btn" onclick="window.location.href='Cart.html'">Add to Cart</button>
+                <button class="buy-now-btn" onclick="window.location.href='Checkout.html'">Buy Now</button>
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-column">
+                <h4 class="footer-logo">LUXE.</h4>
+                <p>Premium fashion for the modern connoisseur. Elevate your style with our curated collections.</p>
+                <div class="social-icons">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                </div>
+            </div>
+            <div class="footer-column">
+                <h4>Shop</h4>
+                <ul>
+                    <li><a href="#">Women</a></li>
+                    <li><a href="#">Men</a></li>
+                    <li><a href="#">Accessories</a></li>
+                    <li><a href="#">New Arrivals</a></li>
+                    <li><a href="#">Sale</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h4>Help</h4>
+                <ul>
+                    <li><a href="#">Customer Service</a></li>
+                    <li><a href="#">My Account</a></li>
+                    <li><a href="#">Find a Store</a></li>
+                    <li><a href="#">Shipping & Returns</a></li>
+                    <li><a href="#">FAQ</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h4>About</h4>
+                <ul>
+                    <li><a href="#">Our Story</a></li>
+                    <li><a href="#">Careers</a></li>
+                    <li><a href="#">Corporate Responsibility</a></li>
+                    <li><a href="#">Press</a></li>
+                </ul>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
