@@ -1,0 +1,615 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fashion Website</title>
+     <link rel="stylesheet" href="Layout10.css">
+     <link href="https://fonts.cdnfonts.com/css/fashion-fetish" rel="stylesheet">
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com">
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+
+     <style>
+
+
+/* Main Container using Flexbox */
+.container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center; /* Vertically centers the sections */
+    padding: 40px;
+    max-width: 1400px;
+    height: 400px;
+    margin-top: 150px;
+    margin-left: 50px;
+    gap: 20px;
+}
+
+/* Text Section Styling */
+.text-section {
+    flex: 1; /* Allows text section to grow and take available space */
+    padding-right: 40px;
+}
+
+.text-section h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 4rem;
+    margin-bottom: 30px;
+    color: #666;
+}
+
+.text-section p {
+    font-size: 1.5rem;
+    color: #8b8989;
+    margin-bottom: 30px;
+    line-height: 1.5;
+}
+
+.shop-button {
+    display: inline-block;
+    background-color: #ff6347; /* Tomato color */
+    color: white;
+    padding: 12px 25px;
+    text-decoration: none;
+    font-size: 22px;
+    border-radius: 10px;
+    font-weight: 500;
+    transition: background-color 0.3s;
+    margin-bottom: 300px;
+}
+
+.shop-button:hover {
+    background-color: #e55337;
+}
+
+/* Image Section Styling */
+.image-section {
+    flex: 1;
+    display: flex;
+    gap: 20px;
+    justify-content: flex-end; /* Aligns image stacks to the right */
+}
+
+.image-stack {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    width: 100%; /* Ensures each stack takes full width within the section */
+}
+
+.image-stack img {
+    max-width: 100%;
+    height: 450px; /* Makes images responsive while maintaining aspect ratio */
+    display: block;
+    object-fit: cover; /* Ensures images fill their container without distortion */
+}
+
+.main-image {
+    height: 450px; /* Adjust height as needed */
+}
+
+.overlay-image {
+    height: 300px; /* Adjust height as needed */
+    margin-top: -150px; /* Overlaps images */
+}
+
+/* Responsiveness for smaller screens */
+@media (max-width: 768px) {
+    .container {
+        flex-direction: column; /* Stacks sections vertically on mobile */
+        padding: 20px;
+    }
+
+    .text-section {
+        padding-right: 0;
+        margin-bottom: 30px;
+    }
+    
+    .image-section {
+        flex-wrap: wrap; /* Allows image stacks to wrap if needed */
+        justify-content: center;
+    }
+
+    .image-stack {
+        width: 45%; /* Makes two columns of images on tablets */
+        gap: 10px;
+    }
+    .main-image, .overlay-image {
+        margin-top: 0; /* Prevents overlap on smaller screens for better stacking */
+    }
+}
+.shop-by-category {
+    padding: 40px 20px;
+    text-align: center;
+    background-color: white;
+}
+.header-section{
+    background-color: #fdfbfb;
+    width: 100%;
+    height: 100px;
+    margin-bottom: 80px;
+}
+
+.header-section h2 {
+    margin-bottom: 5px;
+    padding: 15px;
+    color: #333;
+}
+
+.header-section p {
+    margin-bottom: 30px;
+    color: #666;
+}
+
+.categories-container {
+    display: flex;
+    justify-content: center;
+    gap: 20px; /* Space between cards */
+    overflow: hidden; /* Ensures zoomed content stays within view */
+}
+
+.category-card {
+    position: relative;
+    flex: 1;
+    max-width: 350px;
+    overflow: hidden; /* Hides image overflow during zoom */
+    cursor: pointer;
+}
+
+.category-card img {
+    width: 100%;
+    height: 300px;
+    display: block;
+    /* The key to smooth zoom: */
+    transition: transform 0.5s ease;
+}
+
+.category-card:hover img {
+    /* Zoom effect */
+    transform: scale(1.4);
+}
+.category-card:hover .overlay {
+  opacity: 0; /* Hides overlay */
+}
+
+.overlay {
+    position: absolute;
+    bottom: 120px;
+    left: 0;
+    right: 0;
+    background: rgba(255, 255, 255, 0.7);
+    color: #000;
+    padding: 15px;
+    font-weight: 300;
+    font-size: 24px;
+    text-align: center;
+}
+
+
+.container1 {
+    max-width: 1450px;
+    margin: 20px auto;
+    padding: 0 10px;
+}
+
+.banner {
+    background-image: url('Rectangle 178.jpg'); /* Use a relevant background image */
+    background-size: cover;
+    background-position: center;
+    height: 300px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    margin-bottom: 20px;
+}
+
+.banner h1 {
+    font-size: 4em;
+    margin: 0;
+}
+.product-section {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    padding: 20px;
+}
+
+.product-card {
+    position: relative; /* Parent container is relative */
+    width: 350px; /* Adjust width as needed */
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.product-image {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.product-info {
+    position: absolute; /* Position info absolutely within the card */
+    bottom: 70px;
+    left: 10px;
+    color: black;
+    display: flex;
+    flex-direction: column;
+}
+
+.product-type {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.product-details {
+    font-size: 24px;
+    margin-top: 2px;
+}
+
+.rating-price {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 5px;
+}
+
+.rating {
+    font-size: 24px;
+    color: #ffc107; /* Star color */
+}
+
+.price {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.buy-now-btn {
+    position: absolute; /* Position button absolutely within the card */
+    bottom: 10px;
+    right: 10px;
+    background-color: #FF6F61; /* Button color */
+    color: white;
+    padding: 8px 16px;
+    text-decoration: none;
+    border-radius: 10px;
+    font-size: 24px;
+    text-align: center;
+}
+
+.newsletter-container {
+    text-align: center;
+    padding: 20px;
+    width: 100%;
+    
+}
+
+.newsletter-content h1 {
+    color: black;
+    font-size: 44px;
+    font-weight: bolder;
+    margin-bottom: 10px;
+}
+
+.newsletter-content p {
+    color: #666;
+    font-size: 20px;
+    margin-bottom: 20px;
+}
+
+.subscribe-form {
+    display: flex;
+    justify-content: center;
+    gap: 0;
+}
+
+.subscribe-form input[type="email"] {
+    padding: 10px 15px;
+    border: 1px solid #ccc;
+    border-right: none;
+    flex-grow: 1;
+    max-width: 380px;
+    /* This makes the input field white, matching the image */
+    background-color: #fff; 
+}
+
+.subscribe-form button {
+    padding: 10px 20px;
+    background-color: #FF6F61; /* A shade of coral/salmon */
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 20px;
+}
+
+
+     </style>
+
+</head>
+<body>
+ <header class="main-header">
+    <div class="logo">Fashion World</div>
+    <nav class="nav-links">
+        <a href="Home.html" class="active">Home</a>
+        <a href="Categories.html">Categories</a>
+        <a href="Aboutus.html">About Us</a>
+        <a href="Contact.html">Contact</a>
+    </nav>
+    <div class="header-actions">
+        <!-- Placeholder icons (using simple text/emojis for demonstration) -->
+        <span class="icon" onclick="window.location.href='Cart.html'">🛒</span>
+        <span class="icon" id="open-modal-btn">👤</span>
+        <div id="myModal1" class="modal1">
+    <!-- Modal content -->
+    <div class="modal-content1">
+        <span class="close1">&times;</span>
+        <h1>Welcome to</h1>
+        <h2>Luxury Fashion World</h2>
+        
+        <form>
+            <p>Please Enter Your Mobile Number</p>
+            <div class="phone-input-container">
+                <span class="country-code">+91</span>
+                <input type="tel" id="mobile-number" name="mobile-number" placeholder="Mobile number" required>
+            </div>
+            
+            <a href="#" class="use-email-link">Use E-Mail</a>
+            
+            <div class="recaptcha-info">
+                This site is protected by reCAPTCHA and the Google 
+                <a href="" target="_blank">Privacy Policy</a> and 
+                <a href="" target="_blank">Terms of Service</a> apply. 
+                On Clicking Continue, I agree to Terms of Service & Privacy Policy.
+            </div>
+            
+            <button type="submit" class="continue-btn" onclick="window.location.href='Home.html'">Continue</button>
+        </form>
+    </div>
+</div>
+<script>
+    // Get the modal, the button that opens it, and the close icon
+var modal1 = document.getElementById("myModal1");
+var openBtn = document.getElementById("open-modal-btn");
+var closeBtn = document.getElementsByClassName("close1")[0];
+
+// When the user clicks the button, open the modal by adding the 'show-modal' class
+openBtn.onclick = function() {
+  modal1.classList.add("show-modal");
+}
+
+// When the user clicks on 'x', close the modal by removing the 'show-modal' class
+closeBtn.onclick = function() {
+  modal1.classList.remove("show-modal");
+}
+
+// When the user clicks anywhere outside of the modal content, close it
+window.onclick = function(event) {
+  if (event.target == modal1) {
+    modal1.classList.remove("show-modal");
+  }
+}
+
+</script>
+        <button class="login-btn" id="openModalBtn">Login</button>
+        <div id="myModal" class="modal">
+  <div class="modal-content">
+    <span class="close">&times;</span>
+    <h1 style="font-size: 50px;text-align: center;">LOGIN</h1>
+    <p style="text-align: center;color:gray;font-size: 28px;">How do I start Lorem ipsum dolor At?</p>
+    <div class="login-container">
+        <form class="login-form">
+            <div class="input-group">
+                <i class="fas fa-user"></i>
+                <input type="text" placeholder="Username" required>
+            </div>
+            <div class="input-group">
+                <i class="fas fa-lock"></i>
+                <input type="password" placeholder="Password" required>
+            </div>
+            <button type="submit" class="login-button" onclick="window.location.href='Home.html'">Login</button>
+            <div class="divider">or continue with</div>
+            <button type="button" class="social-button google">
+                <i class="fab fa-google"></i>
+                Continue with google
+            </button>
+            <button type="button" class="social-button apple">
+                <i class="fab fa-apple"></i>
+                Continue with Apple
+            </button>
+        </form>
+    </div>
+</div>
+    </div>
+</header>
+<script>
+// Get the modal
+var modal = document.getElementById("myModal");
+
+// Get the button that opens the modal
+var btn = document.getElementById("openModalBtn");
+
+// Get the <span> element that closes the modal
+var span = document.getElementsByClassName("close")[0];
+
+// When the user clicks the button, open the modal
+btn.onclick = function() {
+  modal.style.display = "block";
+}
+
+// When the user clicks on <span> (x), close the modal
+span.onclick = function() {
+  modal.style.display = "none";
+}
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
+}
+    </script>
+    
+<div class="container">
+        <!-- Text Section -->
+        <div class="text-section">
+            <h1>Elevate Your Style This Season</h1>
+            <p>Discover our new collection of premium fashion pieces designed for the modern connoisseur.</p>
+            <a href="#" class="shop-button">Go To Shop</a>
+        </div>
+        
+        <!-- Image Section -->
+        <div class="image-section">
+            <div class="image-stack">
+                <img src="Frame 2656.jpg" alt="Woman in yellow tracksuit" class="main-image" onclick="window.location.href='Modern.html'">
+                <img src="Frame 2657.jpg" alt="Woman in blue outfit" class="overlay-image">
+                <img src="Frame 2658.jpg" alt="Woman in pink coat" class="main-image">
+                <img src="Frame 2659.jpg" alt="Woman in white dress" class="overlay-image">
+            </div>
+        </div>
+    </div>
+    <section class="shop-by-category">
+    <div class="header-section">
+        <h2>Shop By Category</h2>
+        <p>Curated collections for every occasion</p>
+    </div>
+    <div class="categories-container">
+        <div class="category-card">
+            <img src="Default.jpg" alt="Modern Category">
+            <div class="overlay" onclick="window.location.href='Modern.html'">Modern</div>
+        </div>
+        <div class="category-card">
+            <img src="Default1.jpg" alt="Casual Category">
+            <div class="overlay" onclick="window.location.href='Casual.html'">Casual</div>
+        </div>
+        <div class="category-card">
+            <img src="Default2.jpg" alt="Traditional Category">
+            <div class="overlay" onclick="window.location.href='Traditional.html'">Traditional</div>
+        </div>
+        <div class="category-card">
+            <img src="Default3.jpg" alt="Formal Category">
+            <div class="overlay" onclick="window.location.href='Formals.html'">Formal</div>
+        </div>
+    </div>
+</section>
+
+<div class="container1">
+        <!-- Banner Section -->
+        <div class="banner">
+            <h1>50% OFF</h1>
+        </div>
+        <div class="product-section">
+    <div class="product-card">
+        <img src="Home1.jpg" alt="T-Shirt" class="product-image">
+        <div class="product-info">
+            <span class="product-type">T- Shirt</span>
+            <span class="product-details">Cotton Cloths for Summer</span>
+            <div class="rating-price">
+                <span class="rating">4★</span>
+                <span class="price">$250</span>
+            </div>
+        </div>
+        <a href="#" class="buy-now-btn" onclick="window.location.href='Checkout.html'">Buy Now</a>
+    </div>
+
+    <div class="product-card">
+        <img src="Home2.jpg" alt="scout" class="product-image">
+        <div class="product-info">
+            <span class="product-type">scout</span>
+            <span class="product-details">Cotton Cloths for Summer</span>
+            <div class="rating-price">
+                <span class="rating">4★</span>
+                <span class="price">$250</span>
+            </div>
+        </div>
+        <a href="#" class="buy-now-btn" onclick="window.location.href='Checkout.html'">Buy Now</a>
+    </div>
+
+    <div class="product-card">
+        <img src="Home3.jpg" alt="Gown" class="product-image">
+        <div class="product-info">
+            <span class="product-type">Gown</span>
+            <span class="product-details">Cotton Cloths</span>
+            <div class="rating-price">
+                <span class="rating">4★</span>
+                <span class="price">$250</span>
+            </div>
+        </div>
+        <a href="#" class="buy-now-btn" onclick="window.location.href='Checkout.html'">Buy Now</a>
+    </div>
+
+    <div class="product-card">
+        <img src="Home4.jpg" alt="Top" class="product-image">
+        <div class="product-info">
+            <span class="product-type">Top</span>
+            <span class="product-details">Cotton Cloths for Summer</span>
+            <div class="rating-price">
+                <span class="rating">4★</span>
+                <span class="price">$250</span>
+            </div>
+        </div>
+        <a href="#" class="buy-now-btn" onclick="window.location.href='Checkout.html'">Buy Now</a>
+    </div>
+</div>     
+    </div>
+
+    <div class="newsletter-container">
+    <div class="newsletter-content">
+        <h1>Subscribe to Our Newsletter</h1>
+        <p>Be the first to know about new collections and exclusive offers</p>
+        <form action="#" method="post" class="subscribe-form">
+            <input type="email" name="email" placeholder="" required>
+            <button type="submit">Subscribe</button>
+        </form>
+    </div>
+</div>
+
+<footer class="footer">
+        <div class="footer-container">
+            <div class="footer-column">
+                <h4 class="footer-logo">LUXE.</h4>
+                <p>Premium fashion for the modern connoisseur. Elevate your style with our curated collections.</p>
+                <div class="social-icons">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                </div>
+            </div>
+            <div class="footer-column">
+                <h4>Shop</h4>
+                <ul>
+                    <li><a href="#">Women</a></li>
+                    <li><a href="#">Men</a></li>
+                    <li><a href="#">Accessories</a></li>
+                    <li><a href="#">New Arrivals</a></li>
+                    <li><a href="#">Sale</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h4>Help</h4>
+                <ul>
+                    <li><a href="#">Customer Service</a></li>
+                    <li><a href="#">My Account</a></li>
+                    <li><a href="#">Find a Store</a></li>
+                    <li><a href="#">Shipping & Returns</a></li>
+                    <li><a href="#">FAQ</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h4>About</h4>
+                <ul>
+                    <li><a href="#">Our Story</a></li>
+                    <li><a href="#">Careers</a></li>
+                    <li><a href="#">Corporate Responsibility</a></li>
+                    <li><a href="#">Press</a></li>
+                </ul>
+            </div>
+        </div>
+    </footer>
+   
+</body>
+</html>
