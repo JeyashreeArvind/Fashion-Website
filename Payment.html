@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fashion Website</title>
+    <link rel="stylesheet" href="Layout10.css">
+     <link href="https://fonts.cdnfonts.com/css/fashion-fetish" rel="stylesheet">
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com">
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+<style>
+    .container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #fff;
+    /* Add box shadow and other styling */
+}
+
+.payment-section {
+    display: flex;
+    gap: 50px;
+    /* Adjust for responsiveness using media queries */
+}
+
+.credit-card {
+    
+    color: white;
+    padding: 20px;
+    border-radius: 10px;
+    /* Style the text inside the card */
+}
+.credit-card img {
+    width: 350px;
+    height: 200px;
+    border-radius: 10px;
+}
+.form-details label {
+    margin-bottom: 30px;
+    font-size: 24px;
+}
+.form-details input[type="text"] {
+    width: 100%;
+    padding: 20px;
+    font-size: 24px;
+    margin-bottom: 25px;
+    border: 1px solid black;
+    border-radius: 5px;
+}
+
+.pay-now {
+    background-color:#FF6F61; /* Example red color */
+    color: white;
+    padding: 15px 30px;
+    font-size: 24px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.cancel {
+    background-color:white;
+    padding: 15px 30px;
+    font-size: 24px;
+    border: 1px solid #83bef1;
+    border-radius: 8px;
+    cursor: pointer;
+}
+.back-button {
+    margin-top: 20px;
+    border-radius: 7px;
+    border: none;
+    color: white;
+    margin-left: 700px;
+    background-color: #FF6F61;
+    cursor: pointer;
+    padding: 15px 30px;
+    font-size: 24px;
+    margin-bottom: 50px;
+}
+.progress-container {
+    width: 60%;
+    margin-left: 200px;
+    margin-top: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: sans-serif;
+    font-size: 24px; /* As requested */
+}
+
+.step {
+    display: flex;
+    align-items: center;
+    color: #a0a0a0; /* Default color for inactive steps */
+}
+
+.step.active1 {
+    color: #000; /* Color for the active step text */
+    font-weight: bold;
+}
+
+.circle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px; /* Adjust size as needed */
+    height: 36px;
+    border-radius: 50%;
+    border: 2px solid #a0a0a0;
+    margin-right: 10px;
+    font-size: 16px; /* Smaller font size for the number in the circle */
+}
+
+.step.active1 .circle {
+    background-color: #ff4d4d; /* Red background for active circle */
+    color: #fff; /* White number color */
+    border-color: #ff4d4d;
+}
+
+.line {
+    flex-grow: 1;
+    height: 2px;
+    background-color: #a0a0a0; /* Default line color */
+    margin: 0 10px;
+    width: 20px; /* Adjust line length */
+}
+
+.line.active-line {
+    background-color: #ff4d4d; /* Red color for the active line */
+}
+
+.label {
+    font-size: 24px;
+}
+</style>
+    </head>
+<body>
+  <header class="main-header">
+    <div class="logo">Fashion World</div>
+    <nav class="nav-links">
+        <a href="Home.html" >Home</a>
+        <a href="Categories.html" >Categories</a>
+        <a href="Aboutus.html">About Us</a>
+        <a href="Contact.html" >Contact</a>
+    </nav>
+    <div class="header-actions">
+        <!-- Placeholder icons (using simple text/emojis for demonstration) -->
+        <span class="icon" onclick="window.location.href='Cart.html'" style="color: #FF6F61;">🛒</span>
+        <span class="icon" id="open-modal-btn">👤</span>
+
+<!-- The Modal structure -->
+<div id="myModal1" class="modal1">
+    <!-- Modal content -->
+    <div class="modal-content1">
+        <span class="close1">&times;</span>
+        <h1>Welcome to</h1>
+        <h2>Luxury Fashion World</h2>
+        
+        <form>
+            <p>Please Enter Your Mobile Number</p>
+            <div class="phone-input-container">
+                <span class="country-code">+91</span>
+                <input type="tel" id="mobile-number" name="mobile-number" placeholder="Mobile number" required>
+            </div>
+            
+            <a href="#" class="use-email-link">Use E-Mail</a>
+            
+            <div class="recaptcha-info">
+                This site is protected by reCAPTCHA and the Google 
+                <a href="" target="_blank">Privacy Policy</a> and 
+                <a href="" target="_blank">Terms of Service</a> apply. 
+                On Clicking Continue, I agree to Terms of Service & Privacy Policy.
+            </div>
+            
+            <button type="submit" class="continue-btn" onclick="window.location.href='Home.html'">Continue</button>
+        </form>
+    </div>
+</div>
+<script>
+    // Get the modal, the button that opens it, and the close icon
+var modal1 = document.getElementById("myModal1");
+var openBtn = document.getElementById("open-modal-btn");
+var closeBtn = document.getElementsByClassName("close1")[0];
+
+// When the user clicks the button, open the modal by adding the 'show-modal' class
+openBtn.onclick = function() {
+  modal1.classList.add("show-modal");
+}
+
+// When the user clicks on 'x', close the modal by removing the 'show-modal' class
+closeBtn.onclick = function() {
+  modal1.classList.remove("show-modal");
+}
+
+// When the user clicks anywhere outside of the modal content, close it
+window.onclick = function(event) {
+  if (event.target == modal1) {
+    modal1.classList.remove("show-modal");
+  }
+}
+
+</script>
+
+        <button class="login-btn"  id="openModalBtn">Login</button>
+        <div id="myModal" class="modal">
+  <div class="modal-content">
+    <span class="close">&times;</span>
+    <h1 style="font-size: 50px;text-align: center;">LOGIN</h1>
+    <p style="text-align: center;color:gray;font-size: 28px;">How do I start Lorem ipsum dolor At?</p>
+    <div class="login-container">
+        <form class="login-form">
+            <div class="input-group">
+                <i class="fas fa-user"></i>
+                <input type="text" placeholder="Username" required>
+            </div>
+            <div class="input-group">
+                <i class="fas fa-lock"></i>
+                <input type="password" placeholder="Password" required>
+            </div>
+            <button type="submit" class="login-button" onclick="window.location.href='Home.html'">Login</button>
+            <div class="divider">or continue with</div>
+            <button type="button" class="social-button google">
+                <i class="fab fa-google"></i>
+                Continue with google
+            </button>
+            <button type="button" class="social-button apple">
+                <i class="fab fa-apple"></i>
+                Continue with Apple
+            </button>
+        </form>
+    </div>
+</div>
+    </div>
+</header>
+<script>
+// Get the modal
+var modal = document.getElementById("myModal");
+
+// Get the button that opens the modal
+var btn = document.getElementById("openModalBtn");
+
+// Get the <span> element that closes the modal
+var span = document.getElementsByClassName("close")[0];
+
+// When the user clicks the button, open the modal
+btn.onclick = function() {
+  modal.style.display = "block";
+}
+
+// When the user clicks on <span> (x), close the modal
+span.onclick = function() {
+  modal.style.display = "none";
+}
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
+}
+    </script>
+
+    <div class="progress-container">
+    <div class="step active1">
+        <span class="circle">1</span>
+        <span class="label">Shipping</span>
+    </div>
+    <div class="line active-line"></div>
+    <div class="step active1">
+        <span class="circle">2</span>
+        <span class="label">Payment</span>
+    </div>
+    <div class="line active-line"></div>
+    <div class="step">
+        <span class="circle">3</span>
+        <span class="label">Confirm</span>
+    </div>
+</div> 
+   
+  <div class="container">
+        <!-- Progress Steps (Shipping, Payment, Confirm) -->
+        <div class="progress-container">
+            <!-- ... structure for progress steps ... -->
+        </div>
+
+        <h1 style="text-align: center;margin-bottom: 50px;font-size: 40px;">Payment details</h1>
+
+        <div class="payment-section">
+            <!-- Left side: Credit Card Visual and Payment Amount -->
+            <div class="card-details">
+                <div class="credit-card">
+                    <img src="Creditcard.png">
+                </div>
+                <div class="payment-amount">
+                    <span style="color: #000;font-weight: bold;font-size: 24px;">Payment amount</span>
+                    <span style="color: #FF6F61;font-weight: bold;font-size: 24px;  float: right;">Rs.460</span>
+                </div>
+            </div>
+
+            <!-- Right side: Input Form -->
+            <div class="form-details" id="myForm">
+                <label for="card-holder">Card holder name</label>
+                <input type="text" id="card-holder">
+
+                <label for="card-number">Card Number</label>
+                <input type="text" id="card-number">
+
+                <div class="expiry-cvv">
+                    <div>
+                        <label for="expiry-date">Expiry date</label>
+                        <input type="text" id="expiry-date">
+                    </div>
+                    <div>
+                        <label for="cvv">CVV</label>
+                        <input type="text" id="cvv">
+                    </div>
+                </div>
+
+                <div class="buttons">
+                    <button class="cancel" id="cancelButton">Cancel</button>
+                    <button class="pay-now" onclick="window.location.href='Confirm.html'">Pay Now</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <button class="back-button" onclick="window.location.href='Checkout.html'">← Back</button> 
+    <script>
+        cardHolder=document.getElementById('card-holder');
+        cardNumber=document.getElementById('card-number');
+        expiryDate=document.getElementById('expiry-date');
+        cvv=document.getElementById('cvv');
+        cardHolder.onclick=()=>cardHolder.value="GAYATHIRI S";
+        cardNumber.onclick=()=>cardNumber.value="9047 9485 2593 6046";
+        expiryDate.onclick=()=>expiryDate.value="12/30";
+        cvv.onclick=()=>cvv.value="23456";
+
+        // Add an event listener to the cancel button
+document.getElementById('cancelButton').addEventListener('click', function() {
+    // Select all input elements within a specific container (e.g., a div)
+    const inputs = document.querySelectorAll('div input[type="text"], div input[type="email"]');
+    
+    // Iterate over the selected inputs and clear their values
+    inputs.forEach(input => {
+        input.value = '';
+    });
+});
+
+
+
+            </script>
+
+
+   <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-column">
+                <h4 class="footer-logo">LUXE.</h4>
+                <p>Premium fashion for the modern connoisseur. Elevate your style with our curated collections.</p>
+                <div class="social-icons">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                </div>
+            </div>
+            <div class="footer-column">
+                <h4>Shop</h4>
+                <ul>
+                    <li><a href="#">Women</a></li>
+                    <li><a href="#">Men</a></li>
+                    <li><a href="#">Accessories</a></li>
+                    <li><a href="#">New Arrivals</a></li>
+                    <li><a href="#">Sale</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h4>Help</h4>
+                <ul>
+                    <li><a href="#">Customer Service</a></li>
+                    <li><a href="#">My Account</a></li>
+                    <li><a href="#">Find a Store</a></li>
+                    <li><a href="#">Shipping & Returns</a></li>
+                    <li><a href="#">FAQ</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h4>About</h4>
+                <ul>
+                    <li><a href="#">Our Story</a></li>
+                    <li><a href="#">Careers</a></li>
+                    <li><a href="#">Corporate Responsibility</a></li>
+                    <li><a href="#">Press</a></li>
+                </ul>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

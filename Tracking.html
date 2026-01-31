@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fashion Website</title>
+    <link rel="stylesheet" href="Layout10.css">
+     <link href="https://fonts.cdnfonts.com/css/fashion-fetish" rel="stylesheet">
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com">
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+     <style>
+        .body-container {
+    font-family: sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    
+}
+
+.container {
+    text-align: center;
+    width: 100%;
+    max-width: 700px;
+    height: 300px;
+}
+
+h1 {
+    color: black;
+    margin-bottom: 20px;
+    font-weight: 600;
+}
+
+.card {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: left;
+}
+
+.section-title {
+    font-weight: bold;
+    color:black;
+    font-size: 24px;
+    margin-bottom: 15px;
+    padding-bottom: 10px;
+}
+
+.delivery-info {
+    display: flex;
+    flex-direction: column;
+     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+     height: 100px;
+     justify-content: center;
+     font-size: 24px;
+        padding: 0 20px;
+}
+
+.delivery-text {
+    color: #777;
+    margin: 0 0 10px 0;
+}
+
+.delivery-date-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    
+}
+
+.delivery-date {
+    font-size: 1.5em;
+    font-weight: bold;
+    color: #333;
+    margin: 0;
+}
+
+.truck-icon {
+    font-size: 1.5em;
+    color: #ff4d4d; /* A red color for the truck */
+}
+
+
+.order-status-container {
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 650px;
+    margin-top: 50px;
+    padding: 20px;
+}
+
+.header-section h2 {
+    margin-top: 0;
+    color: #333;
+}
+
+.progress-bar-section {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 25px;
+}
+
+.progress-bar-wrapper {
+    flex-grow: 1;
+    height: 8px;
+    background-color: #e0e0e0;
+    border-radius: 4px;
+    margin-right: 15px;
+    overflow: hidden;
+}
+
+.progress-bar {
+    height: 100%;
+    background-color: #ff4d4d; /* Red color from image */
+    border-radius: 4px;
+    transition: width 0.4s ease-in-out;
+}
+
+.progress-bar-section span {
+    font-size: 1em;
+    font-weight: bold;
+    color: black;
+}
+
+.status-list {
+    border-left: 2px solid #e0e0e0;
+    padding-left: 20px;
+}
+
+.status-item {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 30px;
+    position: relative;
+    opacity: 0.5;
+}
+
+.status-item.active2 {
+    opacity: 1;
+}
+
+.status-icon {
+    width: 30px;
+    height: 30px;
+    background-color: #e0e0e0;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+    font-size: 0.8em;
+    position: absolute;
+    left: -35px; /* Adjust based on border-left width */
+    top: 0;
+}
+
+.status-item.active2 .status-icon {
+    background-color: #ff4d4d; /* Active color */
+}
+
+.status-content h4 {
+    margin: 0 0 5px 0;
+    color: #333;
+}
+
+.status-content p {
+    margin: 0;
+    color: #666;
+    font-size: 0.9em;
+}
+.help-container {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 100px;
+  margin-bottom: 100px;
+  align-items: center;
+  padding: 20px;
+  border: 1px solid black;
+  border-radius: 8px;
+  background-color: #ffffff;
+  max-width: 650px; /* Adjust width as needed */
+  margin: 20px; /* Add margin for spacing */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  flex-wrap: wrap; /* Allows wrapping on smaller screens */
+}
+
+.text-content {
+  flex: 1;
+  margin-right: 20px; /* Space between text and button */
+}
+
+.text-content h2 {
+  margin: 0 0 5px 0;
+  color: #333;
+}
+
+.text-content p {
+  margin: 0;
+  color: #666;
+  font-size: 1.1rem;
+}
+
+.contact-button {
+  display: flex;
+  align-items: center;
+  padding: 10px 15px;
+  background-color: #ffffff;
+  border: 1px solid black;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1.1rem;
+  color: black;
+  font-weight: bold;
+  text-decoration: none;
+  /* Ensures button doesn't shrink */
+  flex-shrink: 0; 
+}
+
+.contact-button:hover {
+  background-color: #f4f4f4;
+}
+
+.icon {
+  margin-right: 8px;
+  font-size: 1.2rem;
+}
+
+     </style>
+</head>
+<body>
+  <header class="main-header">
+    <div class="logo">Fashion World</div>
+    <nav class="nav-links">
+        <a href="Home.html" >Home</a>
+        <a href="Categories.html" >Categories</a>
+        <a href="Aboutus.html">About Us</a>
+        <a href="Contact.html" >Contact</a>
+    </nav>
+    <div class="header-actions">
+        <!-- Placeholder icons (using simple text/emojis for demonstration) -->
+        <span class="icon" onclick="window.location.href='Cart.html'" style="color: #FF6F61;">🛒</span>
+        <span class="icon" id="open-modal-btn">👤</span>
+
+<!-- The Modal structure -->
+<div id="myModal1" class="modal1">
+    <!-- Modal content -->
+    <div class="modal-content1">
+        <span class="close1">&times;</span>
+        <h1>Welcome to</h1>
+        <h2>Luxury Fashion World</h2>
+        
+        <form>
+            <p>Please Enter Your Mobile Number</p>
+            <div class="phone-input-container">
+                <span class="country-code">+91</span>
+                <input type="tel" id="mobile-number" name="mobile-number" placeholder="Mobile number" required>
+            </div>
+            
+            <a href="#" class="use-email-link">Use E-Mail</a>
+            
+            <div class="recaptcha-info">
+                This site is protected by reCAPTCHA and the Google 
+                <a href="" target="_blank">Privacy Policy</a> and 
+                <a href="" target="_blank">Terms of Service</a> apply. 
+                On Clicking Continue, I agree to Terms of Service & Privacy Policy.
+            </div>
+            
+            <button type="submit" class="continue-btn" onclick="window.location.href='Home.html'">Continue</button>
+        </form>
+    </div>
+</div>
+<script>
+    // Get the modal, the button that opens it, and the close icon
+var modal1 = document.getElementById("myModal1");
+var openBtn = document.getElementById("open-modal-btn");
+var closeBtn = document.getElementsByClassName("close1")[0];
+
+// When the user clicks the button, open the modal by adding the 'show-modal' class
+openBtn.onclick = function() {
+  modal1.classList.add("show-modal");
+}
+
+// When the user clicks on 'x', close the modal by removing the 'show-modal' class
+closeBtn.onclick = function() {
+  modal1.classList.remove("show-modal");
+}
+
+// When the user clicks anywhere outside of the modal content, close it
+window.onclick = function(event) {
+  if (event.target == modal1) {
+    modal1.classList.remove("show-modal");
+  }
+}
+
+</script>
+
+        <button class="login-btn"  id="openModalBtn">Login</button>
+        <div id="myModal" class="modal">
+  <div class="modal-content">
+    <span class="close">&times;</span>
+    <h1 style="font-size: 50px;text-align: center;">LOGIN</h1>
+    <p style="text-align: center;color:gray;font-size: 28px;">How do I start Lorem ipsum dolor At?</p>
+    <div class="login-container">
+        <form class="login-form">
+            <div class="input-group">
+                <i class="fas fa-user"></i>
+                <input type="text" placeholder="Username" required>
+            </div>
+            <div class="input-group">
+                <i class="fas fa-lock"></i>
+                <input type="password" placeholder="Password" required>
+            </div>
+            <button type="submit" class="login-button" onclick="window.location.href='Home.html'">Login</button>
+            <div class="divider">or continue with</div>
+            <button type="button" class="social-button google">
+                <i class="fab fa-google"></i>
+                Continue with google
+            </button>
+            <button type="button" class="social-button apple">
+                <i class="fab fa-apple"></i>
+                Continue with Apple
+            </button>
+        </form>
+    </div>
+</div>
+    </div>
+</header>
+<script>
+// Get the modal
+var modal = document.getElementById("myModal");
+
+// Get the button that opens the modal
+var btn = document.getElementById("openModalBtn");
+
+// Get the <span> element that closes the modal
+var span = document.getElementsByClassName("close")[0];
+
+// When the user clicks the button, open the modal
+btn.onclick = function() {
+  modal.style.display = "block";
+}
+
+// When the user clicks on <span> (x), close the modal
+span.onclick = function() {
+  modal.style.display = "none";
+}
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
+}
+    </script>
+   <div class="body-container">
+   <div class="container">
+        <h1>Order Tracking</h1>
+        <div class="card">
+            <p class="section-title">Estimated Delivery</p>
+            <div class="delivery-info">
+                <p class="delivery-text">Your order is expected to arrive by</p>
+                <div class="delivery-date-container">
+                    <p class="delivery-date">Thursday, July 4, 2024</p>
+                    <div class="truck-icon">🚚</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+     <div class="order-status-container">
+        <div class="header-section">
+            <h2>Order Status</h2>
+        </div>
+
+        <div class="progress-bar-section">
+            <div class="progress-bar-wrapper">
+                <div class="progress-bar" style="width: 70%;"></div>
+            </div>
+            <span>70% Complete</span>
+        </div>
+
+        <div class="status-list">
+            <div class="status-item active2">
+                <div class="status-icon"><i class="fas fa-shopping-cart"></i></div>
+                <div class="status-content">
+                    <h4>Order Placed</h4>
+                    <p>We received your order on June 25, 2024.</p>
+                </div>
+            </div>
+            <div class="status-item active2">
+                <div class="status-icon"><i class="fas fa-cogs"></i></div>
+                <div class="status-content">
+                    <h4>Processing</h4>
+                    <p>Your order is being prepared for shipment.</p>
+                </div>
+            </div>
+
+            <div class="status-item active2">
+                <div class="status-icon"><i class="fas fa-box"></i></div>
+                <div class="status-content">
+                    <h4>Shipped</h4>
+                    <p>Your package has left the warehouse.</p>
+                </div>
+            </div>
+
+            <div class="status-item">
+                <div class="status-icon"><i class="fas fa-truck"></i></div>
+                <div class="status-content">
+                    <h4>Out for Delivery</h4>
+                    <p>Your package is on the way to your address.</p>
+                </div>
+            </div>
+            
+            <div class="status-item">
+                <div class="status-icon"><i class="fas fa-home"></i></div>
+                <div class="status-content">
+                    <h4>Delivered</h4>
+                    <p>Your package has been delivered.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="help-container">
+  <div class="text-content">
+    <h2>Need Help?</h2>
+    <p>If you have any questions about your order, our support team is here to help.</p>
+  </div>
+  <button class="contact-button">
+    <span class="icon" onclick="window.location.href='Contact.html'">🎧  Contact Support</span>
+    
+  </button>
+</div>
+
+    </div>
+
+
+   <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-column">
+                <h4 class="footer-logo">LUXE.</h4>
+                <p>Premium fashion for the modern connoisseur. Elevate your style with our curated collections.</p>
+                <div class="social-icons">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                </div>
+            </div>
+            <div class="footer-column">
+                <h4>Shop</h4>
+                <ul>
+                    <li><a href="#">Women</a></li>
+                    <li><a href="#">Men</a></li>
+                    <li><a href="#">Accessories</a></li>
+                    <li><a href="#">New Arrivals</a></li>
+                    <li><a href="#">Sale</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h4>Help</h4>
+                <ul>
+                    <li><a href="#">Customer Service</a></li>
+                    <li><a href="#">My Account</a></li>
+                    <li><a href="#">Find a Store</a></li>
+                    <li><a href="#">Shipping & Returns</a></li>
+                    <li><a href="#">FAQ</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h4>About</h4>
+                <ul>
+                    <li><a href="#">Our Story</a></li>
+                    <li><a href="#">Careers</a></li>
+                    <li><a href="#">Corporate Responsibility</a></li>
+                    <li><a href="#">Press</a></li>
+                </ul>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
